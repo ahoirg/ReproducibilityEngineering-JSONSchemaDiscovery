@@ -1,3 +1,15 @@
 #!/bin/bash
-bash import_json.sh
-while true; do sleep 1000; done
+
+#start MongoDB
+mongod --fork --config /etc/mongod.conf --logpath /var/log/mongod.log
+mongo --eval "db.runCommand({ping: 1})"
+
+#import data
+for file in /usr/src/json-data/students/*.json; do
+    collection_name=$(basename "$file" .json)
+    mongoimport --db jsonschemadiscovery --collection "$collection_name" --file "$file"
+done
+
+#start app
+cd /usr/src/app
+npm run dev
