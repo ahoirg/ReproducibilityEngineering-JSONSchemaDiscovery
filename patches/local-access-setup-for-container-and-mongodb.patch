@@ -1,0 +1,13 @@
+--- package.json
++++ package.json
+@@ -14,8 +14,8 @@
+    "e2e": "ng e2e",
+    "predev": "tsc -p server",
+    "backend": "concurrently \"tsc -w -p server\" \"nodemon dist/server/app.js\"",
+-   "frontend": "ng serve --open",
+-   "dev": "concurrently \"mongod\" \"ng serve --open\" \"tsc -w -p server\" \"nodemon dist/server/app.js\"",
++   "frontend": "ng serve --host 0.0.0.0 --open --port 4200",
++   "dev": "concurrently \"mongod\" \"ng serve --host 0.0.0.0 --open --port 4200\" \"tsc -w -p server\" \"nodemon dist/server/app.js\"",  
+    "prod": "concurrently \"ng build -aot -prod && tsc -p server && node dist/server/app.js\""
+  },
+  "private": true,
