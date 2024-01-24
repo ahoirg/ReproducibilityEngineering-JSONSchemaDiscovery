@@ -1,0 +1,29 @@
+*** ./client/app/_components/discovery/discovery.component.ts	Wed Jan 24 17:39:35 2024
+--- modified.json	Wed Jan 24 20:13:56 2024
+***************
+*** 20,30 ****
+    constructor(private _formBuilder: FormBuilder,
+                private router: Router,
+                private jsonSchemaService: JsonSchemaService,
+                private feedbackService: FeedbackService) {
+        this.model = new DatabaseParam();
+!       this.model.port = '27017';
+        this.authMechanisms = [
+          'DEFAULT', 'GSSAPI', 'PLAIN', 'MONGODB-X509', 'SCRAM-SHA-1', 'MONGODB-CR'
+        ];
+      }
+  
+--- 20,32 ----
+    constructor(private _formBuilder: FormBuilder,
+                private router: Router,
+                private jsonSchemaService: JsonSchemaService,
+                private feedbackService: FeedbackService) {
+        this.model = new DatabaseParam();
+!       this.model.port = '27017'; /* default */
+!       this.model.address = 'localhost'; /* default */
+!       this.model.databaseName = 'jsonschemadiscovery'; /* default */
+        this.authMechanisms = [
+          'DEFAULT', 'GSSAPI', 'PLAIN', 'MONGODB-X509', 'SCRAM-SHA-1', 'MONGODB-CR'
+        ];
+      }
+  
