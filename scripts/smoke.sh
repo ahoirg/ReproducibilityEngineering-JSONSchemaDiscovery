@@ -12,7 +12,7 @@ fi
 
 echo "Checking MongoDB version..."
 if mongod --version; then
-    if mongo jsonschemadiscovery --eval "db.getCollectionNames().includes(\"students_orj\")" | grep true; then
+    if mongo jsonschemadiscovery --eval "db.getCollectionNames().includes(\"drugs\")" | grep true; then
         echo "Data is ready to use!"
     else
         echo "Smoke test failed: There might be an issue with MongoDB."
