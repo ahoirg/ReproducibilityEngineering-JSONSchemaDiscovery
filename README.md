@@ -1,12 +1,10 @@
 # ReproducibilityEngineering-JSONSchemaDiscovery
-The project provides a container that provides an environment where the JSONSchemaDiscovery project can run smoothly and experiments in the paper "An Approach for Schema Extraction of JSON and Extended JSON Document Collections" can be performed.
+The repository provides a container that provides an environment where the JSONSchemaDiscovery project can run smoothly and experiments in the paper "An Approach for Schema Extraction of JSON and Extended JSON Document Collections" can be performed.
 
 > **Important:**
 > All commits in this repository are linked to the relevant issues opened for the development. You can track which commit resolves which issue through the Issues tab. Each commit is connected to the corresponding issues either through the commit message or comments made on the commit. **There are no commits that are not linked to an issue. This ensures that all commits in the project are easily traceable and understandable.**
 
 ## Docker Container Usage Instructions
-
-To utilize the JSON Schema Extraction Tool in a Docker container, follow these simple steps:
 
 1. **Clone the Project**: Begin by cloning the repository using `git clone`, or simply download the Dockerfile directly to your device.
 
@@ -29,7 +27,7 @@ To utilize the JSON Schema Extraction Tool in a Docker container, follow these s
    - You should see something like:
      ```
      REPOSITORY                    TAG       IMAGE ID       CREATED         SIZE
-     json-schema-extraction-tool   latest    9299519dfb43   6 minutes ago   4.86GB
+     json-schema-extraction-tool   latest    bacf8e125d34   4 minutes ago   4.47GB
      ```
 6. **Run the Docker Container**:
    - Use the command:
@@ -53,14 +51,14 @@ To utilize the JSON Schema Extraction Tool in a Docker container, follow these s
     - Run the command `docker ps` to list all running containers.
     - Look for the container running the JSON Schema Extraction Tool. You will see an output similar to:
        ```
-      CONTAINER ID   IMAGE                         COMMAND          CREATED          STATUS          PORTS                                              NAMES
-      54b5e0d86a73   json-schema-extraction-tool   "./start.sh ."   53 minutes ago   Up 53 minutes   0.0.0.0:4200->4200/tcp, 0.0.0.0:27017->27017/tcp   affectionate_payne
+      CONTAINER ID   IMAGE                         COMMAND                  CREATED              STATUS              PORTS                           NAMES
+      f76cc43b32c3   json-schema-extraction-tool   "./scripts/start.sh ."   About a minute ago   Up About a minute   3000/tcp, 4200/tcp, 27017/tcp   amazing_elion
        ```
-     - Use the command replacing {container_Id} with your actual container ID (e.g., 54b5e0d86a73):
+     - Use the command replacing {container_Id} with your actual container ID (e.g., f76cc43b32c3):
        ```
        docker exec -it {container_Id} /bin/bash 
        ``` 
-     - After executing this command, you should be inside the container's shell, indicated by a prompt like root@54b5e0d86a73:/usr/src#.
+     - After executing this command, you should be inside the container's shell, indicated by a prompt like root@f76cc43b32c3:/usr/src# .
 
       This allows you to interact with the Docker container directly through the command line.
 9. **Start All Process**:
