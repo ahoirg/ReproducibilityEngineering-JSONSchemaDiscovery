@@ -1,3 +1,5 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 # ReproducibilityEngineering-JSONSchemaDiscovery
 The repository provides a container that provides an environment where the JSONSchemaDiscovery project can run smoothly and experiments in the paper "An Approach for Schema Extraction of JSON and Extended JSON Document Collections" can be performed.
 
@@ -78,4 +80,17 @@ The repository provides a container that provides an environment where the JSONS
   Note: You can open a terminal on your device and use the following command to copy the report to your device:
   ```
     docker cp {container_id}:/usr/src/report/report.pdf .
+  ```
+Optional: While you are in the "/usr/src/report";
+ - You can use the "make report" command to manually create the report.pdf file. 
+  ```
+    make report
+  ```
+ - You can delete the report.pdf file and all intermediate files during report creation with the "make clean" command. 
+  ```
+    make clean
+  ```
+ - With the " make clean_without_report " command, you can delete all intermediate files during report creation without deleting the report.pdf file.
+  ```
+    make clean_without_report
   ```
