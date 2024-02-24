@@ -70,8 +70,13 @@ def send_api_request(token, collection_name):
             csv_file_name = f"/usr/src/results/{collection_name}.csv"
             with open(csv_file_name, mode='w', newline='') as file:
                 writer = csv.writer(file)
-                writer.writerow(['CollectionCount', 'UniqueUnorderedCount', 'UniqueOrderedCount'])
-                writer.writerow([collection_count, unique_unordered_count, unique_ordered_count])
+                if collection_name != "docs":
+                    writer.writerow(['NJSON', 'RS', 'ROrd'])
+                    writer.writerow([collection_count, unique_unordered_count, unique_ordered_count])
+                else:
+                    writer.writerow(['RS', 'ROrd'])
+                    writer.writerow([unique_unordered_count, unique_ordered_count])
+                    
                 print(collection_name +".csv: OK")
 
     else:
@@ -83,7 +88,7 @@ def main():
         register_user()
         token = login_user()
     if token:
-        for collection_name in ["drugs", "companies", "movies"]:
+        for collection_name in ["drugs", "companies", "movies","docs"]:
             send_api_request(token, collection_name)
 
 if __name__ == "__main__":

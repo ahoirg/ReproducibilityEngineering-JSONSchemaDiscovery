@@ -17,10 +17,16 @@ fi
 # Create the /usr/src/results directory
 mkdir -p /usr/src/results
 
-# Run exp1.py and exp2.py
+# Run exp.py
 echo "Experiment has been started"
-python3 /usr/src/results/exp.py
+python3 /usr/src/scripts/exp.py
 echo "Experiment is done!"
+
+# First, clear existing CSVs in /usr/src/report/data
+rm -f /usr/src/report/data/*.csv
+
+# Now, copy all CSVs from /usr/src/results to /usr/src/report/data
+cp /usr/src/results/*.csv /usr/src/report/data/
 
 # Navigate to /usr/src/report directory
 cd /usr/src/report
@@ -29,4 +35,9 @@ cd /usr/src/report
 make report
 make clean
 
+# Clear the console
+clear
+
 echo "The report has been re-generated with new results."
+echo "You can find the main.pdf in /usr/src/report "
+
