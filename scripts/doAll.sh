@@ -27,17 +27,18 @@ rm -f /usr/src/report/data/*.csv
 
 # Now, copy all CSVs from /usr/src/results to /usr/src/report/data
 cp /usr/src/results/*.csv /usr/src/report/data/
+rm -rf /usr/src/results
 
 # Navigate to /usr/src/report directory
 cd /usr/src/report
 
 # Run make report and then make clean
 make report
-make clean
+make clean_without_report
 
 # Clear the console
 clear
 
 echo "The report has been re-generated with new results."
-echo "You can find the main.pdf in /usr/src/report "
+echo "You can find the report.pdf in /usr/src/report "
 

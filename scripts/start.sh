@@ -5,6 +5,7 @@ mongod --fork --config /etc/mongod.conf --logpath /var/log/mongod.log
 mongo --eval "db.runCommand({ping: 1})"
 
 #import data
+sed -i 's/\t/\\t/g' /usr/src/json-data/drugs.json
 mongoimport --db jsonschemadiscovery --collection docs --file /usr/src/app/examples/alltypes.json
 for file in /usr/src/json-data/*.json; do
     collection_name=$(basename "$file" .json)

@@ -6,10 +6,9 @@ WORKDIR /usr/src
 
 # Install required software
 RUN apt-get update && apt-get install -y curl gnupg2 lsb-release wget git \ 
-    build-essential make python3 python3-pip && pip3 install requests
-
-# Add texlive for generate report
-RUN apt-get update && apt-get install -y texlive texlive-latex-extra texlive-latex-recommended texlive-fonts-extra
+    build-essential make python3 python3-pip texlive texlive-latex-extra \
+    texlive-latex-recommended texlive-fonts-extra \ 
+    && pip3 install requests
     
 # Install Node.js LTS
 RUN apt-get update \
@@ -25,7 +24,9 @@ RUN wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | apt-key add -
     && mkdir -p /data/db \
     # Create and set MongoDB configuration file
     && echo "net:" > /etc/mongod.conf \
-    && echo "  bindIp: 0.0.0.0" >> /etc/mongod.conf
+    && echo "  bindIp: 0.0.0.0" >> /etc/mongod.conf \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # Create directory for the report and pull report
 RUN mkdir -p /usr/src/report \ 
